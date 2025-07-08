@@ -2,6 +2,7 @@
 
 ## Prerequisites
 
+- SSH key registered in Hetzner cloud for accessing the nodes.
 - Create `cloud-init` folder
 - Create files `cloud-init/controller.yaml` and `cloud-init/worker.yaml` using the templates in the `cloud-init-examples` folder
 
@@ -10,6 +11,7 @@
 ```bash
 export HCLOUD_TOKEN=         # Get this from the Hetzner Cloud console
 export TF_VAR_hcloud_token=  # same as above
+export TF_VAR_ssh_key=       # name of SSH key
 export TF_VAR_my_ip=         # Your public IP address
 ```
 

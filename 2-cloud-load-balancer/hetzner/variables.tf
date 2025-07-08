@@ -3,7 +3,7 @@ variable "hcloud_token" {
 }
 
 variable "ssh_key" {
-  default = "tcloud"
+  # name of SSH key
 }
 
 variable "location" {
@@ -39,16 +39,5 @@ variable "server" {
   default = {
     type  = "cpx11"
     image = "ubuntu-22.04"
-  }
-}
-
-variable "load_balancer" {
-  type = object({
-    type              = string
-    delete_protection = bool
-  })
-  default = {
-    type              = "lb11"
-    delete_protection = false
   }
 }
