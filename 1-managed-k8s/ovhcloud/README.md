@@ -1,6 +1,6 @@
 # OVHcloud
 
-## OVHcloud documentation
+## Various documentation
 
 - [Creating your first OVHcloud Public Cloud project](https://help.ovhcloud.com/csm/en-public-cloud-compute-create-project?id=kb_article_view&sysparm_article=KB0050599)
 - [First Steps with the OVHcloud APIs](https://help.ovhcloud.com/csm/en-api-getting-started-ovhcloud-api?id=kb_article_view&sysparm_article=KB0042777)

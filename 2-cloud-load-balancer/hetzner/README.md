@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Create `cloud-init` folder in the root of the project
+- Create `cloud-init` folder
 - Create files `cloud-init/controller.yaml` and `cloud-init/worker.yaml` using the templates in the `cloud-init-examples` folder
 
 ## .env file
@@ -13,7 +13,7 @@ export TF_VAR_hcloud_token=  # same as above
 export TF_VAR_my_ip=         # Your public IP address
 ```
 
-## Hetzner k3s installation
+## k3s installation
 
 ```bash
 source .env
@@ -31,7 +31,7 @@ kubectl config use-context k3s
 kubectl get nodes
 ```
 
-## Deploy cloud load balancer Helm chart
+## Deploy cloud controller manager
 
 ```bash
 helm repo add hcloud https://charts.hetzner.cloud
@@ -45,7 +45,7 @@ helm install hcloud-cloud-controller-manager hcloud/hcloud-cloud-controller-mana
 --set controller.watchTag=k3s  
 ```
 
-## Hetzner pod deployment
+## Deploy service with Hetzner load balancer
 
 ```bash
 kubectl apply -f example-service.yaml

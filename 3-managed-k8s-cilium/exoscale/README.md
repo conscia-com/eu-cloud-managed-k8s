@@ -1,11 +1,11 @@
 # Exoscale
 
-## Notes
+## Various documentation
 
 - [Terraform on Exoscale](https://www.exoscale.com/syslog/terraform-with-exoscale/)
 - [Easily deploy an SKS cluster on Exoscale with Terraform](https://www.exoscale.com/syslog/easy-terraform-sks/)
 
-## Get started
+## Prerequisites
 
 - Register an account in the [Exoscale portal](https://portal.exoscale.com/)
 - Create an API key
@@ -17,7 +17,7 @@ export EXOSCALE_API_KEY=...
 export EXOSCALE_API_SECRET=...
 ```
 
-## Deploy resources using Terraform
+## Provision cluster
 
 ```bash
 source .env
