@@ -26,6 +26,7 @@ metadata:
   annotations:
     load-balancer.hetzner.cloud/name: "example-k3s-service"
     load-balancer.hetzner.cloud/location: "nbg1"
+    load-balancer.hetzner.cloud/use-private-ip: "true"
 spec:
   type: LoadBalancer
   selector:

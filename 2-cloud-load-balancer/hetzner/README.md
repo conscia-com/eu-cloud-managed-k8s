@@ -1,5 +1,9 @@
 # Hetzner Cloud
 
+## Various documentation
+
+- [Setup your own scalable Kubernetes cluster with the Terraform provider for Hetzner Cloud](https://community.hetzner.com/tutorials/setup-your-own-scalable-kubernetes-cluster)
+
 ## Prerequisites
 
 - SSH key registered in Hetzner cloud for accessing the nodes.
