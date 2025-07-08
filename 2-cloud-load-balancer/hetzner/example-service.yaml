@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-app
+  template:
+    metadata:
+      labels:
+        app: example-app
+    spec:
+      containers:
+      - name: example-app
+        image: nginx:latest  # Replace with your application image
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-service
+  annotations:
+    load-balancer.hetzner.cloud/name: "example-k3s-service"
+    load-balancer.hetzner.cloud/location: "nbg1"
+spec:
+  type: LoadBalancer
+  selector:
+    app: example-app
+  ports:
+    - protocol: TCP
+      port: 8001
+      targetPort: 80
