@@ -37,7 +37,13 @@ terraform apply
 ## Connect to the cluster
 
 ```bash
-# Get the cluster ID from the terraform output
-CLUSTER_ID=...
+
+CLUSTER_ID_FULL= ... # Get the cluster ID from the terraform output
+CLUSTER_NAME= ...    # Get the cluster name from the terraform output
+
+CLUSTER_ID=$(echo $CLUSTER_ID_FULL | cut -d  "/" -f 2)
+CONTEXT_NAME="admin@${CLUSTER_NAME}-${CLUSTER_ID}"
+
 scw k8s kubeconfig install $CLUSTER_ID
+kubectl config use-context $CONTEXT_NAME
 ```
