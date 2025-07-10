@@ -14,6 +14,6 @@ Setting up Kubernetes clusters in 4 different public EU clouds for testing and l
     - [Scaleway example configuration](./3-managed-k8s-cilium/scaleway)
     - [Exoscale example configuration](./3-managed-k8s-cilium/exoscale)
 4. Cilium Hubble observability
-    - [Scaleway example configuration](./4-managed-k8s-hubble/scaleway/
+    - [Scaleway example configuration](./4-managed-k8s-hubble/scaleway/)
 5. Cilium cluster mesh
-    - [Hetzner example configuration](./5-cluster-mesh/hetzner/
+    - [Hetzner example configuration](./5-cluster-mesh/hetzner/)
