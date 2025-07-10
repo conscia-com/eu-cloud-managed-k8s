@@ -1,0 +1,14 @@
+#cloud-config
+packages:
+  - curl
+users:
+  - name: cluster
+    ssh-authorized-keys:
+      - "ssh-ed25519 ..."
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+runcmd:
+  - apt-get update -y
+  - curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--flannel-backend=none --disable-network-policy --cluster-cidr=10.44.0.0/16 --service-cidr=10.45.0.0/16" sh -
+  - chown cluster:cluster /etc/rancher/k3s/k3s.yaml
+  - chown cluster:cluster /var/lib/rancher/k3s/server/node-token

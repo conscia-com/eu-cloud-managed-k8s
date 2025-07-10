@@ -37,7 +37,6 @@ terraform apply
 ## Connect to the cluster
 
 ```bash
-
 CLUSTER_ID_FULL= ... # Get the cluster ID from the terraform output
 CLUSTER_NAME= ...    # Get the cluster name from the terraform output
 

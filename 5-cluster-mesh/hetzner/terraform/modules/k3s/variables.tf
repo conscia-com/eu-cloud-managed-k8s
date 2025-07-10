@@ -1,0 +1,10 @@
+variable "name" {}
+variable "type" {}
+variable "image" {}
+variable "ssh_key" {}
+variable "location" {}
+variable "network_id" {}
+variable "ip" {}
+variable "worker_ip" {}
+variable "user_data" {}
+variable "worker_user_data" {}
