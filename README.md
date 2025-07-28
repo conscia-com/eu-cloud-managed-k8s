@@ -17,3 +17,5 @@ Setting up Kubernetes clusters in 4 different public EU clouds for testing and l
     - [Scaleway example configuration](./4-managed-k8s-hubble/scaleway/)
 5. Cilium cluster mesh
     - [Hetzner example configuration](./5-cluster-mesh/hetzner/)
+6. Cluster API
+    - [Hetzner example configuration](./6-cluster-api/hetzner/)
