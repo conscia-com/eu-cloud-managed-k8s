@@ -1,0 +1,188 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"cluster.x-k8s.io/v1beta1","kind":"Cluster","metadata":{"annotations":{},"name":"hetzner-cluster","namespace":"default"},"spec":{"clusterNetwork":{"pods":{"cidrBlocks":["10.244.0.0/16"]}},"controlPlaneRef":{"apiVersion":"controlplane.cluster.x-k8s.io/v1beta1","kind":"KubeadmControlPlane","name":"hetzner-cluster-control-plane"},"infrastructureRef":{"apiVersion":"infrastructure.cluster.x-k8s.io/v1beta1","kind":"HetznerCluster","name":"hetzner-cluster"}}}
+  creationTimestamp: "2025-07-28T10:39:44Z"
+  finalizers:
+  - cluster.cluster.x-k8s.io
+  generation: 2
+  name: hetzner-cluster
+  namespace: default
+  resourceVersion: "18932"
+  uid: 3777ea09-9bfe-470d-a6b4-bfe7ca401681
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 10.244.0.0/16
+  controlPlaneEndpoint:
+    host: 91.98.15.254
+    port: 443
+  controlPlaneRef:
+    apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+    kind: KubeadmControlPlane
+    name: hetzner-cluster-control-plane
+    namespace: default
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: HetznerCluster
+    name: hetzner-cluster
+    namespace: default
+status:
+  conditions:
+  - lastTransitionTime: "2025-07-28T10:40:17Z"
+    message: Scaling up control plane to 3 replicas (actual 1)
+    reason: ScalingUp
+    severity: Warning
+    status: "False"
+    type: Ready
+  - lastTransitionTime: "2025-07-28T10:44:52Z"
+    status: "True"
+    type: ControlPlaneInitialized
+  - lastTransitionTime: "2025-07-28T10:40:17Z"
+    message: Scaling up control plane to 3 replicas (actual 1)
+    reason: ScalingUp
+    severity: Warning
+    status: "False"
+    type: ControlPlaneReady
+  - lastTransitionTime: "2025-07-28T10:44:50Z"
+    status: "True"
+    type: InfrastructureReady
+  controlPlaneReady: true
+  failureDomains:
+    fsn1:
+      controlPlane: true
+  infrastructureReady: true
+  observedGeneration: 2
+  phase: Provisioned
+  v1beta2:
+    conditions:
+    - lastTransitionTime: "2025-07-28T10:39:44Z"
+      message: |-
+        * ControlPlaneAvailable: Waiting for etcd to report the list of members
+        * WorkersAvailable:
+          * MachineDeployment hetzner-cluster-md-0: 0 available replicas, at least 3 required (spec.strategy.rollout.maxUnavailable is 0, spec.replicas is 3)
+      observedGeneration: 2
+      reason: NotAvailable
+      status: "False"
+      type: Available
+    - lastTransitionTime: "2025-07-28T10:44:52Z"
+      message: ""
+      observedGeneration: 2
+      reason: ProbeSucceeded
+      status: "True"
+      type: RemoteConnectionProbe
+    - lastTransitionTime: "2025-07-28T10:44:50Z"
+      message: ""
+      observedGeneration: 2
+      reason: Ready
+      status: "True"
+      type: InfrastructureReady
+    - lastTransitionTime: "2025-07-28T10:44:52Z"
+      message: ""
+      observedGeneration: 2
+      reason: Initialized
+      status: "True"
+      type: ControlPlaneInitialized
+    - lastTransitionTime: "2025-07-28T10:39:44Z"
+      message: Waiting for etcd to report the list of members
+      observedGeneration: 2
+      reason: NotAvailable
+      status: "False"
+      type: ControlPlaneAvailable
+    - lastTransitionTime: "2025-07-28T10:39:45Z"
+      message: '* MachineDeployment hetzner-cluster-md-0: 0 available replicas, at
+        least 3 required (spec.strategy.rollout.maxUnavailable is 0, spec.replicas
+        is 3)'
+      observedGeneration: 2
+      reason: NotAvailable
+      status: "False"
+      type: WorkersAvailable
+    - lastTransitionTime: "2025-07-28T10:39:44Z"
+      message: ""
+      observedGeneration: 2
+      reason: NotRollingOut
+      status: "False"
+      type: RollingOut
+    - lastTransitionTime: "2025-07-28T10:39:44Z"
+      message: ""
+      observedGeneration: 2
+      reason: NotRemediating
+      status: "False"
+      type: Remediating
+    - lastTransitionTime: "2025-07-28T10:39:44Z"
+      message: ""
+      observedGeneration: 2
+      reason: NotScalingDown
+      status: "False"
+      type: ScalingDown
+    - lastTransitionTime: "2025-07-28T10:39:44Z"
+      message: |-
+        * KubeadmControlPlane hetzner-cluster-control-plane:
+          * Scaling up from 1 to 3 replicas is blocked because:
+            * waiting for control plane components to become healthy
+            * waiting for etcd cluster to become healthy
+      observedGeneration: 2
+      reason: ScalingUp
+      status: "True"
+      type: ScalingUp
+    - lastTransitionTime: "2025-07-28T10:40:19Z"
+      message: |-
+        * Machine hetzner-cluster-control-plane-fklqn:
+          * NodeHealthy: Waiting for a Node with spec.providerID hcloud://105393733 to exist
+          * Control plane components: Waiting for a Node with spec.providerID hcloud://105393733 to exist
+          * EtcdMemberHealthy: Waiting for a Node with spec.providerID hcloud://105393733 to exist
+      observedGeneration: 2
+      reason: ReadyUnknown
+      status: Unknown
+      type: ControlPlaneMachinesReady
+    - lastTransitionTime: "2025-07-28T10:46:01Z"
+      message: |-
+        * Machine hetzner-cluster-md-0-v5rnv-k8gsl:
+          * NodeHealthy: Waiting for a Node with spec.providerID hcloud://105394055 to exist
+        * Machine hetzner-cluster-md-0-v5rnv-kvvsq:
+          * NodeHealthy: Waiting for a Node with spec.providerID hcloud://105394056 to exist
+        * Machine hetzner-cluster-md-0-v5rnv-kxp95:
+          * NodeHealthy: Waiting for a Node with spec.providerID hcloud://105394059 to exist
+      observedGeneration: 2
+      reason: ReadyUnknown
+      status: Unknown
+      type: WorkerMachinesReady
+    - lastTransitionTime: "2025-07-28T10:39:44Z"
+      message: ""
+      observedGeneration: 2
+      reason: UpToDate
+      status: "True"
+      type: ControlPlaneMachinesUpToDate
+    - lastTransitionTime: "2025-07-28T10:39:44Z"
+      message: ""
+      observedGeneration: 2
+      reason: UpToDate
+      status: "True"
+      type: WorkerMachinesUpToDate
+    - lastTransitionTime: "2025-07-28T10:39:44Z"
+      message: ""
+      observedGeneration: 2
+      reason: NotPaused
+      status: "False"
+      type: Paused
+    - lastTransitionTime: "2025-07-28T10:39:44Z"
+      message: ""
+      observedGeneration: 2
+      reason: NotDeleting
+      status: "False"
+      type: Deleting
+    controlPlane:
+      availableReplicas: 0
+      desiredReplicas: 3
+      readyReplicas: 0
+      replicas: 1
+      upToDateReplicas: 1
+    workers:
+      availableReplicas: 0
+      desiredReplicas: 3
+      readyReplicas: 0
+      replicas: 3
+      upToDateReplicas: 3

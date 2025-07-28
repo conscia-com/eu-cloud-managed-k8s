@@ -1,0 +1,5 @@
+# ignore kubeconfig files
+*kubeconfig.yaml
+
+# ignore cluster configuration files
+workload_cluster.yaml
