@@ -155,3 +155,4 @@ kubectl get nodes
 ## SCW: Optional: Delete the workload cluster
 
 TBD
+x
