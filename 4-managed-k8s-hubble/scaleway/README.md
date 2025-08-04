@@ -1,5 +1,11 @@
 # Scaleway - Managed Kubernetes and Hubble Observability
 
+## Documentation
+
+The content in this document is based on the Scaleway documentation, which can be found at the following link:
+- [Scaleway Helm repository](https://github.com/scaleway/helm-charts)
+
+
 ## Deploy the cluster
 
 Use the guide provided in [](../3-managed-k8s-cilium/scaleway/README.md) to deploy a Kubernetes cluster on Scaleway.

@@ -1,9 +1,14 @@
 # Exoscale
 
+## Documentation
+
+The content in this document is based on the Exoscale documentation, which can be found at the following link:
+- [Easily deploy an SKS cluster on Exoscale with Terraform](https://www.exoscale.com/syslog/easy-terraform-sks/)
+
+
 ## Various documentation
 
 - [Terraform on Exoscale](https://www.exoscale.com/syslog/terraform-with-exoscale/)
-- [Easily deploy an SKS cluster on Exoscale with Terraform](https://www.exoscale.com/syslog/easy-terraform-sks/)
 
 ## Prerequisites
 

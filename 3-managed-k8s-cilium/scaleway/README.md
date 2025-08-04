@@ -1,8 +1,12 @@
 # Scaleway
 
+## Documentation
+
+The content in this document is based on the Scaleway documentation, which can be found at the following link:
+- [Scaleway Terraform Quickstart Guide](http://scaleway.com/en/docs/terraform/quickstart/)
+
 ## Various documentation
 
-- [Scaleway Terraform Quickstart Guide](http://scaleway.com/en/docs/terraform/quickstart/)
 - [Terraform documentation](https://registry.terraform.io/providers/scaleway/scaleway/2.0.0-rc.2/docs/resources/k8s_cluster)
 
 ## Prerequisistes

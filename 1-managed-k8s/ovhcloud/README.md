@@ -1,11 +1,16 @@
 # OVHcloud
 
+## Documentation
+
+The content in this document is based on the OVHcloud documentation, which can be found at the following link:
+- [Creating a cluster](https://help.ovhcloud.com/csm/en-public-cloud-kubernetes-create-cluster?id=kb_article_view&sysparm_article=KB0049685)
+- [Creating a private registry (Harbor) through Terraform](https://help.ovhcloud.com/csm/en-gb-public-cloud-private-registry-creation-via-terraform?id=kb_article_view&sysparm_article=KB0050341)
+
+
 ## Various documentation
 
 - [Creating your first OVHcloud Public Cloud project](https://help.ovhcloud.com/csm/en-public-cloud-compute-create-project?id=kb_article_view&sysparm_article=KB0050599)
 - [First Steps with the OVHcloud APIs](https://help.ovhcloud.com/csm/en-api-getting-started-ovhcloud-api?id=kb_article_view&sysparm_article=KB0042777)
-- [Creating a cluster](https://help.ovhcloud.com/csm/en-public-cloud-kubernetes-create-cluster?id=kb_article_view&sysparm_article=KB0049685)
-- [Creating a private registry (Harbor) through Terraform](https://help.ovhcloud.com/csm/en-gb-public-cloud-private-registry-creation-via-terraform?id=kb_article_view&sysparm_article=KB0050341)
 - [Expose your app deployed on an OVHcloud Managed Kubernetes Service](https://help.ovhcloud.com/csm/en-ie-public-cloud-kubernetes-using-lb?id=kb_article_view&sysparm_article=KB0050008)
 
 ## Prerequisites

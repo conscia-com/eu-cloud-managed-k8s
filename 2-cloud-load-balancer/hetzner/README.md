@@ -1,7 +1,8 @@
 # Hetzner Cloud
 
-## Various documentation
+## Documentation
 
+The content in this document is based on the Hetzner documentation, which can be found at the following link:
 - [Setup your own scalable Kubernetes cluster with the Terraform provider for Hetzner Cloud](https://community.hetzner.com/tutorials/setup-your-own-scalable-kubernetes-cluster)
 
 ## Prerequisites

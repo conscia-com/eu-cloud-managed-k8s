@@ -6,13 +6,13 @@ ClusterAPI is a Kubernetes project that provides declarative APIs and tooling to
 
 ## Documentation
 
+The content in this document is based on the Hetzner Community tutorial for the Cluster API provider, which can be found at the following link:
 - [Managing Kubernetes on Hetzner with Cluster API](https://community.hetzner.com/tutorials/kubernetes-on-hetzner-with-cluster-api)
 
 ## Prerequisites
 - [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) installed
 - [Clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start.html#install-clusterctl) installed
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/) installed
-- [Hetzner Cloud API Token](https://docs.hetzner.cloud/#introduction)
 - [Hetzner Cloud SSH Key](https://docs.hetzner.cloud/#introduction)
 
 ## .env file
@@ -98,9 +98,15 @@ kubectl edit deployment hcloud-cloud-controller-manager -n kube-system
 And that's it! You now have a working Kubernetes cluster in Hetzner Cloud.
 
 ## Optional: Delete the workload cluster
+
 ```bash
+# Change back to the management cluster kubeconfig
 unset KUBECONFIG
-kubectl config use-context kind-caph-mgt-cluster
 kubectl get clusters
+
+# Delete the workload cluster
 kubectl delete cluster hetzner-cluster
+
+# Delete the management cluster
+kind delete cluster --name caps-mgt-cluster
 ```
