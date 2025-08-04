@@ -19,3 +19,4 @@ Setting up Kubernetes clusters in 4 different public EU clouds for testing and l
     - [Hetzner example configuration](./5-cluster-mesh/hetzner/)
 6. Cluster API
     - [Hetzner example configuration](./6-cluster-api/hetzner/)
+    - [Scaleway example configuration](./6-cluster-api/scaleway/)

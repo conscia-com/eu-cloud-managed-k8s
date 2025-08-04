@@ -7,7 +7,7 @@ ClusterAPI is a Kubernetes project that provides declarative APIs and tooling to
 ## Documentation
 
 The content in this document is based on the official Scaleway Cluster API provider documentation, which can be found at the following link:
-- [cluster-api-provider-scaleway/docs/getting-started.md](https://github.com/scaleway/cluster-api-provider-scaleway/blob/main/docs/getting-started.md)
+- [cluster-api-provider-scaleway/docs/getting-started.md](https://github.com/scaleway/cluster-api-provider-scaleway/blob/main/docs/getting-started.md) ([LICENSE](https://github.com/scaleway/cluster-api-provider-scaleway/blob/main/LICENSE))
 
 ## Prerequisites
 - [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) installed
