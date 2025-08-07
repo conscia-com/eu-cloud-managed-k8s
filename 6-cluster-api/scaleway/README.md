@@ -22,6 +22,7 @@ export SCW_ACCESS_KEY=  # Get this from the Scaleway console
 export SCW_SECRET_KEY=  # Get this from the Scaleway console
 export SCW_PROJECT_ID=  # Scaleway project id
 export SCW_REGION=      # Region where you want to create your clusters (e.g. "fr-par")
+export SCW_ZONE=        # Zone where you want to create your cluster LB (e.g. "fr-par-1")
 ```
 
 ## Create management cluster
@@ -29,15 +30,9 @@ export SCW_REGION=      # Region where you want to create your clusters (e.g. "f
 ```bash
 # Create a cluster with Kind
 kind create cluster --name caps-mgt-cluster
-kind export kubeconfig --name caps-mgt-cluster
 
 # Transform the cluster into a management cluster by using clusterctl init.
-clusterctl init --infrastructure scaleway
-# clusterctl init --core cluster-api --bootstrap kubeadm --control-plane kubeadm --infrastructure hetzner
-
-# Replace <YOUR_HCLOUD_TOKEN> with the API token you generated in the previous step
-# source .env
-# kubectl create secret generic hetzner --from-literal=hcloud=$HCLOUD_TOKEN
+clusterctl init --core cluster-api --bootstrap kubeadm --control-plane kubeadm --infrastructure scaleway
 ```
 
 ## Prepare the OS image
@@ -45,6 +40,7 @@ In order to provision a workload cluster, you will need to create an OS image wi
 
 ```bash
 # import the image provided by Scaleway
+source .env
 IMAGE_NAME="cluster-api-ubuntu-2404-v1.32.4"
 export SNAPSHOT_ID=$(scw block snapshot import-from-object-storage \
   name=$IMAGE_NAME \
@@ -58,10 +54,10 @@ watch scw block snapshot get ${SNAPSHOT_ID}
 
 # Create the image from the snapshot
 scw instance image create \
-   name=$IMAGE_NAME \
-   arch=x86_64 \
-   snapshot-id=${SNAPSHOT_ID} \
-   project-id=${SCW_PROJECT_ID}
+  name=$IMAGE_NAME \
+  arch=x86_64 \
+  snapshot-id=${SNAPSHOT_ID} \
+  project-id=${SCW_PROJECT_ID}
 ```
 
 ## Create your workload cluster
@@ -89,7 +85,7 @@ Nodes will have the NotReady status until a CNI is installed in the cluster.
 
 ```bash
 # Wait for the cluster to be created
-clusterctl describe cluster ${CLUSTER_NAME}
+watch clusterctl describe cluster ${CLUSTER_NAME}
   ...
   └─MachineDeployment/my-cluster-md-0                                         False  Warning   WaitingForAvailableMachines  3m31s  Minimum availability requires 1 replicas, current 0 available
     └─Machine/my-cluster-md-0-bgzv8-5k96v                                     True                                          2m15s
@@ -110,12 +106,56 @@ kubectl get nodes
 
 Your workload cluster is now ready to have components installed (not included in this guide):
 
-- Install a CNI plugin
-- Install the Scaleway CCM to manage Nodes and LoadBalancers
+- Install a CNI plugin e.g. Cilium:
+```bash
+# Install Cilium
+cilium install --version 1.18.0 --namespace kube-system
+# check that the nodes are in ready state (takes a few minutes)
+kubectl get nodes
+```
+- Install the Scaleway CCM to manage Nodes and LoadBalancers e.g.:
+```bash
+# Create a secret with your Scaleway credentials
+kubectl create secret generic scaleway-secret \
+  --namespace kube-system \
+  --from-literal=SCW_ACCESS_KEY=$SCW_ACCESS_KEY \
+  --from-literal=SCW_SECRET_KEY=$SCW_SECRET_KEY \
+  --from-literal=SCW_DEFAULT_PROJECT_ID=$SCW_PROJECT_ID \
+  --from-literal=SCW_DEFAULT_REGION=$SCW_REGION \
+  --from-literal=SCW_DEFAULT_ZONE=$SCW_ZONE
+
+# Deploy the Scaleway CCM
+kubectl apply -f https://raw.githubusercontent.com/scaleway/scaleway-cloud-controller-manager/master/examples/k8s-scaleway-ccm-latest.yml
+
+# Verify the CCM is running
+kubectl get pods -n kube-system -l app=scaleway-cloud-controller-manager
+
+# Deploy an example LoadBalancer service and verify it works
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-service
+spec:
+  selector:
+    app: example
+  ports:
+    - port: 8765
+      targetPort: 9376
+  type: LoadBalancer
+EOF
+
+kubectl get svc example-service
+```
+
+---
 
 ## Optional: Delete the workload cluster
 
 ```bash
+# Delete the example service (and its LoadBalancer)
+kubectl delete svc example-service
+
 # Change back to the management cluster kubeconfig
 unset KUBECONFIG
 kubectl get clusters

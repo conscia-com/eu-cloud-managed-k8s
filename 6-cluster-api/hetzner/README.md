@@ -40,7 +40,7 @@ kubectl create secret generic hetzner --from-literal=hcloud=$HCLOUD_TOKEN
 
 ## Create your workload cluster
 
-- Create file with cluster variables `cluster_variables.sh`:
+- Set environment variables for cluster:
 ```bash
 export CONTROL_PLANE_MACHINE_COUNT=3 \
 export WORKER_MACHINE_COUNT=3 \
@@ -96,6 +96,8 @@ kubectl edit deployment hcloud-cloud-controller-manager -n kube-system
 ```
 
 And that's it! You now have a working Kubernetes cluster in Hetzner Cloud.
+
+---
 
 ## Optional: Delete the workload cluster
 
