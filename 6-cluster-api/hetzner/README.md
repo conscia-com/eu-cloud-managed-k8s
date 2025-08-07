@@ -137,7 +137,6 @@ unset KUBECONFIG
 kubectl get clusters
 
 # Delete the workload cluster
-# kubectl delete cluster hetzner-cluster
 kubectl delete cluster ${CLUSTER_NAME}
 
 # Delete the management cluster
