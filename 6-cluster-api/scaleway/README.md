@@ -81,7 +81,7 @@ kubectl apply -f ${CLUSTER_NAME}.yaml
 
 ## Wait for the cluster to be created
 
-Nodes will have the NotReady status until a CNI is installed in the cluster.
+- Note: nodes will have the NotReady status until a CNI is installed in the cluster.
 
 ```bash
 # Wait for the cluster to be created
@@ -106,12 +106,12 @@ kubectl get nodes
 
 Your workload cluster is now ready to have components installed (not included in this guide):
 
-- Install a CNI plugin e.g. Cilium:
+- Install a CNI plugin:
 ```bash
-# Install Cilium
-cilium install --version 1.18.0 --namespace kube-system
-# check that the nodes are in ready state (takes a few minutes)
-kubectl get nodes
+# Install Flannel CNI - You can use your preferred CNI instead, e.g. Cilium
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+# check that the nodes are in ready state (takes a minute)
+watch kubectl get nodes
 ```
 - Install the Scaleway CCM to manage Nodes and LoadBalancers e.g.:
 ```bash
@@ -146,7 +146,11 @@ spec:
 EOF
 
 kubectl get svc example-service
+
+# Check the Scaleway console for the created LoadBalancer
 ```
+
+And that's it! You now have a working Kubernetes cluster in Scaleway.
 
 ---
 
